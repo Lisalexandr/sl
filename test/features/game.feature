@@ -1,5 +1,5 @@
 
-Feature: NetEnt slot game
+Feature: Slot game
 
 	Tests for a simple slot game that will display different messages to a user depending on the matching tiles count
 
@@ -9,13 +9,14 @@ Feature: NetEnt slot game
 		Given I open "http://127.0.0.1:8000/" url
 		# Check header
 		Then game header message should contain text "Welcome"
-		# Check button
+		# Check spin button
 		Then button spin should be present
 		When I click button spin
 		# Check tiles
 		Then tile number 1 should be present
 		And tile number 2 should be present
 		And tile number 3 should be present
+		And I take a screenshot
 
 
 	Scenario: Verify that spin with no matching tiles will display a loose message

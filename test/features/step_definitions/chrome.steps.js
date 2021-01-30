@@ -57,7 +57,7 @@ When(/I spin to get (not|two|all) matching tiles$/, async function (count) {
   let reRoll = ''
   while (reRoll !== howMany) {
     await driver.findElement(By.xpath(btnRoll)).click()
-    reRoll = howItShouldWork(
+    reRoll = await howItShouldWork(
       // A helper function that holds condition matching logic
       await driver.findElement(By.xpath(defaultTile(1))).getAttribute('style'),
       await driver.findElement(By.xpath(defaultTile(2))).getAttribute('style'),

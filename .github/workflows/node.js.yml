@@ -20,22 +20,23 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Install
-          uses: ianwalter/puppeteer@main
+        - uses: nanasess/setup-chromedriver@master
           with:
-            args: npm install
-        - name: Start app
-          uses: ianwalter/puppeteer@main
+          chromedriver-version: '88.0.4324.146'
+        - run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+        
+        - uses: actions/checkout@v1
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
           with:
-            args: npm start
-        - name: Test
-          uses: ianwalter/puppeteer@main
-          with:
-            args: npm run test
-        - uses: actions/upload-artifact@v1
-          if: failure()
-          with:
-            name: logs
-            path: logs
+            node-version: ${{ matrix.node-version }}
+        - name: npm install and test
+          run: |
+            npm ci
+            npm start
+            npm test
+          env:
+            CI: true

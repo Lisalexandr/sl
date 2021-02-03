@@ -20,11 +20,22 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm start
-    - run: npm test
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Install
+          uses: ianwalter/puppeteer@main
+          with:
+            args: npm install
+        - name: Start app
+          uses: ianwalter/puppeteer@main
+          with:
+            args: npm start
+        - name: Test
+          uses: ianwalter/puppeteer@main
+          with:
+            args: npm run test
+        - uses: actions/upload-artifact@v1
+          if: failure()
+          with:
+            name: logs
+            path: logs

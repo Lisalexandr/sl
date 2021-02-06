@@ -6,7 +6,7 @@ Feature: Slot game
 
 	# Scenario: Open game page and verify all sections and controls are present
 
-	# 	Given I open "http://127.0.0.1:8000/" url
+	# 	Given I open "http://127.0.0.1:4444/" url
 	# 	# Check header
 	# 	Then game header message should contain text "Welcome"
 	# 	# Check spin button

@@ -8,12 +8,18 @@ jobs:
         node-version: [14.x]
     steps:
         - name: Checkout
-          uses: actions/checkout@v2
+          steps:
+          - uses: actions/checkout@v2
+          - uses: nanasess/setup-chromedriver@master
+            with:
+              # Optional: do not specify to match Chrome's version
+              chromedriver-version: '88.0.4324.96'
+          - run: |
+              export DISPLAY=:99
+              chromedriver --url-base=/wd/hub &
+              sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
         - name: Install
-          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
-          with:
-            args: npm install
+          - run: npm install
+          - run: npm run start
         - name: Test
-          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
-          with:
-            args: npm run test
+          - run: npm run test

@@ -55,12 +55,12 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        'goog:chromeOptions': {
-            args: [
-                '--headless',
-                '--disable-gpu',
-                '--disable-dev-shm-usage'
-            ],
+        // 'goog:chromeOptions': {
+        //     args: [
+        //         '--headless',
+        //         '--disable-gpu',
+        //         '--disable-dev-shm-usage'
+        //     ],
         }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -98,6 +98,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
+    
     // baseUrl: 'http://127.0.0.1:8000/',
     baseUrl: 'http://google.com/',
     //
@@ -116,9 +117,9 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-        // ['chromedriver', {
-        //     args: ['--no-sandbox', '--disable-dev-shm-usage', '--headless']
-        // }]
+        ['chromedriver', {
+            args: ['--no-sandbox', '--disable-dev-shm-usage', '--headless']
+        }]
     ],
     
     // Framework you want to run your specs with.

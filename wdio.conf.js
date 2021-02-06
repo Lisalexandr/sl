@@ -55,6 +55,11 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
+        args: [
+            'headless',
+            'disable-gpu',
+            'disable-dev-shm-usage'
+        ],
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -109,8 +114,6 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     services: [
         ['chromedriver', {
-            logFileName: 'wdio-chromedriver.log', // default
-            outputDir: 'driver-logs', // overwrites the config.outputDir
             args: ['--no-sandbox', '--disable-dev-shm-usage', '--headless']
         }]
     ],

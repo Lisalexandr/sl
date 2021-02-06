@@ -12,9 +12,12 @@ jobs:
         - name: Install
           uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
           with:
-            args: pnpm i
-        - name: Test
+            args: nmp install
+        - name: Start server
           uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
           with:
             args: npm run start
+        - name: Test
+          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+          with:
             args: npm run test

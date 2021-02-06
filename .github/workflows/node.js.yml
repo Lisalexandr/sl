@@ -5,15 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [12.x]
     steps:
         - name: Checkout
           uses: actions/checkout@v2
         - name: Install
-          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
+          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
           with:
-            args: npm install
+            args: pnpm i
         - name: Test
-          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
+          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
           with:
+            args: npm run start
             args: npm run test

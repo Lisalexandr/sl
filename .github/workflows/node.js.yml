@@ -12,7 +12,7 @@ jobs:
         - name: Install
           uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
           with:
-            args: nmp install
+            args: pnpm i
         - name: Start server
           uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
           with:

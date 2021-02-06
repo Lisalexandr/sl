@@ -10,14 +10,14 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
         - name: Install
-          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
           with:
             args: nmp install
         - name: Start server
-          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
           with:
             args: npm run start
         - name: Test
-          uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+          uses: ianwalter/puppeteer-container@afefc4bee7341a77baa94503da684e2895ea5d30
           with:
             args: npm run test

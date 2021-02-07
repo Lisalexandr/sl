@@ -4,7 +4,7 @@
   "description": "netent code assignment",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js &",
     "test": "./node_modules/.bin/wdio run wdio.conf.js"
   },
   "keywords": [],
